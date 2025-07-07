@@ -1,0 +1,16 @@
+---
+title: "Auto Sales in US"
+author: "Shuntaro Kawakami"
+execute:
+    echo: false
+---
+
+
+```{r}
+#| message: false
+#| warning: false
+library(tidyverse)
+library(scales)
+source("load_auto_sales_data.R")
+All |> filter(Year %in% c(2023, 2024, 2025)) |> filter(Sale != 0) |> ggplot(aes(x=Date, y=Sale, color=Model)) + geom_line() + scale_y_continuous(labels = label_comma()) + scale_x_date(date_labels = "%b/%y", date_breaks = "2 months") 
+```
