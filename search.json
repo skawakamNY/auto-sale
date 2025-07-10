@@ -1,37 +1,44 @@
 [
   {
+    "objectID": "conclusion.html",
+    "href": "conclusion.html",
+    "title": "Untitled",
+    "section": "",
+    "text": "##Conclusion"
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "Auto Sales in US",
     "section": "",
-    "text": "About this site"
+    "text": "My name is Shuntaro Kawakami (Email: skawakam@hotmail.com), GitHub account https://github.com/skawakamNY,"
   },
   {
     "objectID": "about.html#about-me",
     "href": "about.html#about-me",
-    "title": "About",
-    "section": "About Me",
-    "text": "About Me\nMy name is Shuntaro Kawakami (Email: skawakam@hotmail.com), GitHub account https://github.com/skawakamNY,"
+    "title": "Auto Sales in US",
+    "section": "",
+    "text": "My name is Shuntaro Kawakami (Email: skawakam@hotmail.com), GitHub account https://github.com/skawakamNY,"
   },
   {
     "objectID": "about.html#about-this-project",
     "href": "about.html#about-this-project",
-    "title": "About",
+    "title": "Auto Sales in US",
     "section": "About This Project",
-    "text": "About This Project\nThe project is on auto sales in US before and after increase of tariff (https://github.com/skawakamNY/auto-sale).\nThis project was created as a part of David Kane’s Data Science Bootcamp."
+    "text": "About This Project\nThe project is on auto sales in US before and after tariff increase (https://github.com/skawakamNY/auto-sale).\nThis project was created as a part of David Kane’s Data Science Bootcamp."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Auto Sales in US",
     "section": "",
-    "text": "Due to increase of tariff by the Trump administration took effect on 6/4/2025 (50% on steel, 25% on aluminum, 25% on all imported automobiles and auto parts) which would lead to increase in price of automobiles in the long run (especially those from outside of US) could already have impact of sale of new car in the US. Using auto sales data for various models including domestic and international auto maker from https://www.goodcarbadcar.net/2025-u-s-auto-sales-figures-by-model-all-vehicle-ranked/, graph was created to demonstrate whether number of auto sales was affected by the increase of tariff. The graphs are showing that there are noticeable decline of auto sales in month of June, 2025 for most of the models."
+    "text": "Due to increase of tariff by the Trump administration took effect on 6/4/2025 (50% on steel, 25% on aluminum, 25% on all imported automobiles and auto parts) which would lead to increase in price of automobiles in the long run due to increase of cost (especially those from outside of US) could already have impact of sale of new car in the US as the dealers try to prevent from losing money. Using auto sales data for various models including domestic and international auto maker from [GOOD CAR BAD CAR] (https://www.goodcarbadcar.net/2025-u-s-auto-sales-figures-by-model-all-vehicle-ranked/), graph based on the data collected and manipulated was created to demonstrate whether number of auto sales was affected by the tariff increase. The graphs are showing that there are noticeable decline of auto sales in month of June, 2025 for most of the models."
   },
   {
     "objectID": "index.html#introduction",
     "href": "index.html#introduction",
     "title": "Auto Sales in US",
     "section": "",
-    "text": "Due to increase of tariff by the Trump administration took effect on 6/4/2025 (50% on steel, 25% on aluminum, 25% on all imported automobiles and auto parts) which would lead to increase in price of automobiles in the long run (especially those from outside of US) could already have impact of sale of new car in the US. Using auto sales data for various models including domestic and international auto maker from https://www.goodcarbadcar.net/2025-u-s-auto-sales-figures-by-model-all-vehicle-ranked/, graph was created to demonstrate whether number of auto sales was affected by the increase of tariff. The graphs are showing that there are noticeable decline of auto sales in month of June, 2025 for most of the models."
+    "text": "Due to increase of tariff by the Trump administration took effect on 6/4/2025 (50% on steel, 25% on aluminum, 25% on all imported automobiles and auto parts) which would lead to increase in price of automobiles in the long run due to increase of cost (especially those from outside of US) could already have impact of sale of new car in the US as the dealers try to prevent from losing money. Using auto sales data for various models including domestic and international auto maker from [GOOD CAR BAD CAR] (https://www.goodcarbadcar.net/2025-u-s-auto-sales-figures-by-model-all-vehicle-ranked/), graph based on the data collected and manipulated was created to demonstrate whether number of auto sales was affected by the tariff increase. The graphs are showing that there are noticeable decline of auto sales in month of June, 2025 for most of the models."
   }
 ]
