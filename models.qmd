@@ -1,5 +1,135 @@
 ---
-title: "Model"
-format: html
+execute:
+    echo: false
 ---
+## Auto Sales in US (By Brands)
+```{r}
+#| message: false
+#| warning: false
+library(ggplot2)
+library(dplyr)
+library(scales)
+source("load_auto_sales_data.R")
 
+year_range <- c(2023, 2024, 2025)
+year_range_All <- All |> filter(Year %in% year_range)
+y_max <- max(year_range_All$Sale, na.rm = TRUE)
+vline_date <- as.Date("2025-06-05")
+All |> 
+    filter(Year %in% year_range)  |> 
+    filter(Sale != 0) |> 
+    ggplot(aes(x=Date, y=Sale, color=Model)) + 
+    geom_line() + 
+      geom_vline(xintercept = as.numeric(vline_date), linetype = "dashed", color = "black") +
+        annotate("text",
+           x = vline_date,
+           y = y_max * 0.80,  # 95% of max y for better placement
+           label = "tariff increase",
+           angle = 90,
+           vjust = -0.5,
+           hjust = 0,
+           size = 3.5) +
+scale_y_continuous(labels = label_comma(), limits = c(0, y_max)) + 
+scale_x_date(date_labels = "%b/%y", date_breaks = "2 months")  + 
+labs(x="Month", y="Number of cars sold", caption="Data Source: https://www.goodcarbadcar.net/")
+     cat("(Figure 1)")
+```
+## Auto Sales in US (By Countries)
+```{r}
+#| message: false
+#| warning: false
+monthly_sales_by_country <- All |>
+  group_by(Country, Date, Year) |>
+  summarise(Total_Sale = sum(Sale, na.rm = TRUE), .groups = "drop")
+
+#y_max_by_country <- max(monthly_sales_by_country$Total_Sale, na.rm = TRUE)
+y_max_by_country <- 750000
+monthly_sales_by_country |>
+    filter(Year %in% year_range) |> 
+    filter(Total_Sale != 0) |> 
+    ggplot(aes(x=Date, y=Total_Sale, color=Country)) + 
+    geom_line() + 
+      geom_vline(xintercept = as.numeric(vline_date), linetype = "dashed", color = "black") +
+        annotate("text",
+           x = vline_date,
+           y = y_max_by_country * 0.80,  # 95% of max y for better placement
+           label = "tariff increase",
+           angle = 90,
+           vjust = -0.5,
+           hjust = 0,
+           size = 3.5) +
+scale_y_continuous(labels = label_comma(), limits = c(0, y_max_by_country)) + 
+scale_x_date(date_labels = "%b/%y", date_breaks = "2 months")  + 
+labs(title="", x="Month", y='Number of cars sold', caption='Data Source: https://www.goodcarbadcar.net/')
+     cat("(Figure 2)")
+```
+## Comparison of cars sold for individual brand (2024 to 2025)
+```{r}
+#| message: false
+#| warning: false
+All |> 
+    filter(Year %in% c(2025)) |> 
+    filter(Sale != 0) |> 
+    ggplot(aes(x = Date, y = Ratio_From_Prev_Year)) +
+    geom_line(color = "steelblue") +
+      geom_vline(xintercept = as.numeric(vline_date), linetype = "dashed", color = "black") +
+        annotate("text",
+           x = vline_date,
+           y = max(All$Ratio_From_Prev_Year, na.rm = TRUE) * 0.80,  # 95% of max y for better placement
+           label = "tariff increase",
+           angle = 90,
+           vjust = -0.5,
+           hjust = 0,
+           size = 3.5) +
+    facet_wrap(~ Model, scales = "free_y") +
+    scale_y_continuous(labels = label_percent(accuracy = 1)) +
+    labs(
+        title = "",
+        x = "Month (2025)",
+        y = "Percentage of cars sold",
+        caption = "Data Source: https://www.goodcarbadcar.net/"
+     ) +
+  theme_minimal()
+     cat("(Figure 3)")
+```
+## Comparison of cars sold by countries (2024 to 2025)
+```{r}
+#| message: false
+#| warning: false
+monthly_Ration_by_country <- All |>
+  group_by(Country, Date, Year) |>
+  summarise(Ratio_By_Country = sum(Sale, na.rm = TRUE) / sum(Sale_prev_year, na.rm = TRUE), .groups = "drop")
+y_max_ratio_by_country <- max(monthly_Ration_by_country$Ratio_By_Country, na.rm = TRUE)
+
+monthly_Ration_by_country |>
+    filter(Year %in% c(2025)) |> 
+    filter(Ratio_By_Country != 0) |> 
+    ggplot(aes(x=Date, y=Ratio_By_Country, color=Country)) + 
+    geom_line() + 
+      geom_vline(xintercept = as.numeric(vline_date), linetype = "dashed", color = "black") +
+        annotate("text",
+           x = vline_date,
+           y = y_max_ratio_by_country * 0.80,  # 95% of max y for better placement
+           label = "tariff increase",
+           angle = 90,
+           vjust = -0.5,
+           hjust = 0,
+           size = 3.5) +
+    scale_y_continuous(labels = label_percent(accuracy = 1)) +
+scale_y_continuous(labels = label_comma()) + 
+scale_x_date(date_labels = "%b/%y", date_breaks = "2 months")  + 
+labs(
+        title = "",
+        x = "Month (2025)",
+        y = "Percentage of cars sold",
+        caption = "Data Source: https://www.goodcarbadcar.net/"
+     ) 
+     cat("(Figure 4)")
+```
+
+## Observation
+Accornding to Figure 1, auto sales for most of auto makers which include not only international but also domestic declined compared with previous month.  It is interesting to note that Honda is the biggest winner as number of cars sold is increased by more than 60% from previous month assuming that data provided is correct and that is the main reason why auto sale when grouped by country, total Japanese cars sold increased even after the tariff according to Figure 2 whereas other countries including USA declined.  To eliminate seasonal aspect of auto sale, Figure 3 is showing percentage of increase/decrease of car sales comparing with the same month from previous year.  The figure is showing that all except Honda is either selling less or less increase of percentage from previous month and it is the similar result when sale is grouped by country in Figure 4.
+
+
+## Conclusion
+It is little early to make any conclusion of impact on the tariff increase as car dealers most likely are still working hard to minimize increase of car price or perhaps still selling ones which are in the inventory.  However, it is not coincidence that almost all the cars sold in the US are declining as it is most likely the case that price is moving higher.  It is also interesting to note that even car makers in US seems to be selling less which also could be correlated with tariff increase as supply chain or assembly line may reply on products or workforce by other countries where increase in tariff could be pushing up the cost of manufacture.   

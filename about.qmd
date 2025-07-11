@@ -1,13 +1,11 @@
 ---
-title: "About"
+execute:
+    echo: false
 ---
-
-About this site
-
 ## About Me
 My name is Shuntaro Kawakami (Email: [skawakam@hotmail.com](skawakam@hotmail.com)), GitHub account [https://github.com/skawakamNY](https://github.com/skawakamNY),
 
 ## About This Project
-The project is on auto sales in US before and after increase of tariff (https://github.com/skawakamNY/auto-sale).  
+The project is on auto sales in US before and after tariff increase [https://github.com/skawakamNY/auto-sale](https://github.com/skawakamNY/auto-sale).  
 
 This project was created as a part of [David Kane’s Data Science Bootcamp](https://bootcamp.davidkane.info/).
